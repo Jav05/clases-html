@@ -1,7 +1,11 @@
 <?php
 
-        /* 
+        /*  Clase para la creación de una tabla html con la informacion
+         * recibida de una array
          *                              EJEMPLO DE USO MAS ABAJO
+         * 
+         * Autor: Javier Rojas
+         * 19/03/2020
          */
 
         class htmlTabla{
@@ -217,3 +221,28 @@ $html .= '</table>';
 }
 
 
+//error_reporting(E_ALL);
+//$tablaErr = new htmlTabla();
+//$BD       = new consulta_principal();
+//$tabla    = 'errores_palabras';
+//$columna  = 'error';
+////$row      = $BD->leer($tabla,$columna);
+//
+//$tablaErr->array = $BD->leer($tabla,$columna);
+//$tablaErr->numColumnas = 2;
+//$tablaErr->border = 0;
+//$tablaErr->width = '35%';
+//$tablaErr->class = 'textbox2';
+//$tablaErr->trclass = '';
+//$tablaErr->tdClass = '';
+//$tablaErr->enlace = '../index.php';
+////$tablaErr->i = 1;
+//
+////para imprimir delante el numero de orden, falso no imprime
+//$tablaErr->iOk = true;
+////para imprimir delante del elemento del array
+//$tablaErr->delante = ' - ';
+//
+//$tabla_err = $tablaErr->creaTabla();
+//echo $tabla_err;
+//$BD = null;
