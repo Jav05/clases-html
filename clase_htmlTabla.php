@@ -91,7 +91,6 @@
         
         
     $html = "<table width='$this->width' border='$this->border' class='$this->class'>";
-    $arrUtil = new arrayUtils();
     $numcolumnas = $this->numColumnas;
   
     $total_resultados = count($this->array);
