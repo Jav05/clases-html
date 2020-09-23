@@ -266,14 +266,8 @@ $html .= '</table>';
 }
 
 
-//error_reporting(E_ALL);
-//$tablaErr = new htmlTabla();
-//$BD       = new consulta_principal();
-//$tabla    = 'errores_palabras';
-//$columna  = 'error';
-////$row      = $BD->leer($tabla,$columna);
-//
-//$tablaErr->array = $BD->leer($tabla,$columna);
+
+//$tablaErr->array = 'array_con_la_info';
 //$tablaErr->numColumnas = 2;
 //$tablaErr->border = 0;
 //$tablaErr->width = '35%';
