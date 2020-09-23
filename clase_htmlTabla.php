@@ -41,7 +41,7 @@
         public $tdClass = '';
         /*
         * convierte en un enlace cada elemento "../docs/pagina.php?var=$var&foo=$foo"
-        * para que las variables pasadas dean las internas usar $varEnlace. y esta dejar
+        * para que las variables pasadas sean las internas usar $varEnlace. y esta dejar
         * de la forma "pagina.php"
         */
         public $enlace = '';
@@ -52,7 +52,7 @@
         */   
         public $delante = '';
         /*
-        * $i se setea a 1 por que si no, no podria generrarse bien la tabla html
+        * $i se setea a 1 por que si no, no podria generarse bien la tabla html
         */
         public $i = 1;
         /*
@@ -91,6 +91,7 @@
         
         
     $html = "<table width='$this->width' border='$this->border' class='$this->class'>";
+    $arrUtil = new arrayUtils();
     $numcolumnas = $this->numColumnas;
   
     $total_resultados = count($this->array);
@@ -167,12 +168,45 @@
                               
                               //si $varEnlace viene lleno cambio el valor de $key por el suyo
                               elseif($this->varEnlace !=''){
+
+                                $html .=  "<a href='$this->enlace?";
+                                if(is_array($this->varEnlace)){
+
+                                  
+                                  
+                                  $h = 1;
+                                  $cuan = count ($this->varEnlace);
+                                  foreach($this->varEnlace as $valuass){
+
+
+                                    $key_b = $valuass;
+                                    $valora = urlencode($value[$key_b]);
+                                   
+                                     
+                                    if($h == 1){
+                                      $html .=  "$valuass=$valora";
+                                    }else{
+                                      $html .=  "&$valuass=$valora";
+                                    }
+                                      $h++;
+                                    
+                                    
+                                    
+
+                                  }
+                                 $html .= "'>" . $value[$key]."</a></td>"; 
+
+                                }else{
+
                                    $key_a = $this->varEnlace;
                                    $valor = urlencode($value[$key_a]);
-                                   $variable = md5($this->varEnlace);
                                    
-                                   $html .=  "<a href='$this->enlace?$variable=$valor' >";
+                                   
+                                   $html .=  "<a href='$this->enlace?$this->varEnlace=$valor' >";
                                    $html .= $value[$key]."</a></td>"; 
+                                }
+
+
                               }else{
                                    $html .=  "<a href='$this->enlace' >";
                                    $html .= $value[$key]."</a></td>";
@@ -180,7 +214,19 @@
                               
                               
                         }else{
+
+
+                          if($key == 'fecha') {
+
+                            $fecha = explode(' ', $value[$key]);
+                            $fecha_grande = explode('-', $fecha[0]);
+                            $fecha_bien = $fecha_grande[2] . '-' . $fecha_grande[1] . '-' . $fecha_grande[0];
+                            $fecha_bien = $fecha_bien . ' ' . $fecha[1];
+                            $html .= "<td class='$this->tdClass'>".$fecha_bien."</td>";
+
+                          }else{
                               $html .= "<td class='$this->tdClass'>".$value[$key]."</td>";
+                          }
                         }
                          
                       
